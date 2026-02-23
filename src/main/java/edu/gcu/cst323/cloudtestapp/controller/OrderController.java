@@ -73,7 +73,7 @@ public class OrderController {
         return "redirect:/orders";
     }
 
-    @PostMapping("/{id}/delete")
+    @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
         orderRepo.deleteById(id);
         return "redirect:/orders";
