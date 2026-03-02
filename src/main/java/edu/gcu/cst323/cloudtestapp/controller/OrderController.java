@@ -24,12 +24,14 @@ public class OrderController {
         this.productRepo = productRepo;
     }
 
+    // Display a list of all orders
     @GetMapping
     public String list(Model model) {
         model.addAttribute("orders", orderRepo.findAll());
         return "orders/list";
     }
 
+    // Show form to create a new order
     @GetMapping("/new")
     public String newForm(Model model) {
         model.addAttribute("form", new OrderCreateForm());
@@ -38,6 +40,7 @@ public class OrderController {
         return "orders/new";
     }
 
+    // Handle submission of new order data
     @PostMapping
     public String create(@ModelAttribute("form") OrderCreateForm form) {
         Customer customer = customerRepo.findById(form.getCustomerId()).orElseThrow();
@@ -73,6 +76,7 @@ public class OrderController {
         return "redirect:/orders";
     }
 
+    // Delete an order by id and return to list
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
         orderRepo.deleteById(id);

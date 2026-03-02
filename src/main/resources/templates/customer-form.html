@@ -6,25 +6,31 @@
 </head>
 <body class="container mt-4">
 
+<!-- form heading -->
 <h2>Add Customer</h2>
 
+<!-- form bound to Customer entity, submits to customer endpoint -->
 <form th:action="@{/customers}" th:object="${customer}" method="post">
 
+  <!-- first name input -->
   <div class="mb-3">
     <label class="form-label">First Name</label>
     <input type="text" th:field="*{firstName}" class="form-control" required>
   </div>
 
+  <!-- last name input -->
   <div class="mb-3">
     <label class="form-label">Last Name</label>
     <input type="text" th:field="*{lastName}" class="form-control" required>
   </div>
 
+  <!-- email input (required) -->
   <div class="mb-3">
     <label class="form-label">Email</label>
     <input type="email" th:field="*{email}" class="form-control" required>
   </div>
 
+  <!-- phone input (optional) -->
   <div class="mb-3">
     <label class="form-label">Phone</label>
     <input type="text" th:field="*{phone}" class="form-control" placeholder="Optional">

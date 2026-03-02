@@ -7,19 +7,24 @@
 </head>
 <body class="container py-4">
 
+<!-- page title for product creation -->
 <h1 class="text-center mb-4">Add Product</h1>
 
+<!-- form bound to Product entity, posts to products endpoint -->
 <form th:action="@{/products}" th:object="${product}" method="post" class="mx-auto" style="max-width: 600px;">
+  <!-- input for product name -->
   <div class="mb-3">
     <label class="form-label">Name</label>
     <input class="form-control" th:field="*{productName}" required />
   </div>
 
+  <!-- input for product price -->
   <div class="mb-3">
     <label class="form-label">Price</label>
     <input class="form-control" th:field="*{price}" required />
   </div>
 
+  <!-- input for optional product description -->
   <div class="mb-3">
     <label class="form-label">Description</label>
     <input class="form-control" th:field="*{description}" />

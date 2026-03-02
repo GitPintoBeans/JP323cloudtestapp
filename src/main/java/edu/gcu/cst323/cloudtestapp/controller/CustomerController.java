@@ -17,24 +17,28 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
+    // Handles GET requests to list all customers
     @GetMapping
     public String listCustomers(Model model) {
         model.addAttribute("customers", customerRepository.findAll());
         return "customers";
     }
 
+    // Display form for creating a new customer
     @GetMapping("/new")
     public String showForm(Model model) {
         model.addAttribute("customer", new Customer());
         return "customer-form";
     }
 
+    // Save or update customer and redirect to list
     @PostMapping
     public String saveCustomer(@ModelAttribute Customer customer) {
         customerRepository.save(customer);
         return "redirect:/customers";
     }
 
+    // Delete a customer by id and redirect
     @GetMapping("/delete/{id}")
     public String deleteCustomer(@PathVariable Integer id) {
         customerRepository.deleteById(id);

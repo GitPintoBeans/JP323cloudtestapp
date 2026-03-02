@@ -7,8 +7,10 @@
 </head>
 <body class="container py-4">
 
+<!-- header for products management page -->
 <h1 class="text-center mb-4">Products</h1>
 
+<!-- button to navigate to product creation form -->
 <div class="mb-3 text-center">
   <a class="btn btn-primary" th:href="@{/products/new}">Add Product</a>
 </div>
@@ -24,12 +26,15 @@
   </tr>
   </thead>
   <tbody>
+  <!-- iterate over product list passed by controller -->
   <tr th:each="p : ${products}">
+    <!-- display product fields -->
     <td th:text="${p.productId}"></td>
     <td th:text="${p.productName}"></td>
     <td th:text="${p.price}"></td>
     <td th:text="${p.description}"></td>
     <td>
+      <!-- deletion form posts back to controller -->
       <form th:action="@{|/products/${p.productId}/delete|}" method="post" style="display:inline;">
         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
       </form>

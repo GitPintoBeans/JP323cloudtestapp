@@ -6,10 +6,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+// JPA entity for customer orders
 @Entity
 @Table(name = "orders")
 public class Order {
 
+    // primary key, auto-generated
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
@@ -21,10 +23,12 @@ public class Order {
     @Column(name = "total_amount", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalAmount = BigDecimal.ZERO;
 
+    // associated customer placing the order
     @ManyToOne(optional = false)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    // line items attached to this order
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
 

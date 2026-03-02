@@ -6,8 +6,10 @@
 </head>
 <body class="container mt-4">
 
+<!-- page title for customer list -->
 <h2>Customers</h2>
 
+<!-- link to navigate to new customer form -->
 <a href="/customers/new" class="btn btn-primary mb-3">Add Customer</a>
 
 <table class="table table-bordered table-striped">
@@ -23,7 +25,9 @@
   </tr>
   </thead>
   <tbody>
+  <!-- iterate over customers provided by controller -->
   <tr th:each="c : ${customers}">
+    <!-- display each customer field -->
     <td th:text="${c.customerId}"></td>
     <td th:text="${c.firstName}"></td>
     <td th:text="${c.lastName}"></td>
@@ -31,6 +35,7 @@
     <td th:text="${c.phone}"></td>
     <td th:text="${c.createdAt}"></td>
     <td>
+      <!-- delete link with confirmation prompt -->
       <a th:href="@{/customers/delete/{id}(id=${c.customerId})}" class="btn btn-danger btn-sm"
          onclick="return confirm('Delete this customer?');">Delete</a>
     </td>

@@ -7,10 +7,13 @@
 </head>
 <body class="container py-4">
 
+<!-- page heading -->
 <h1 class="text-center mb-4">Add Order</h1>
 
+<!-- form bound to OrderCreateForm model, posts to create endpoint -->
 <form th:action="@{/orders}" th:object="${form}" method="post" class="mx-auto" style="max-width: 900px;">
 
+  <!-- select input for choosing customer from list provided by controller -->
   <div class="mb-3">
     <label class="form-label">Customer</label>
     <select class="form-select" th:field="*{customerId}" required>
@@ -20,6 +23,7 @@
     </select>
   </div>
 
+  <!-- table listing products with quantity inputs -->
   <h5 class="mt-4">Products (enter quantity)</h5>
   <table class="table table-bordered">
     <thead>
@@ -30,6 +34,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- iterate through available products, creating quantity inputs -->
       <tr th:each="p : ${products}">
         <td th:text="${p.productName}"></td>
         <td th:text="${p.price}"></td>

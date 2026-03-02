@@ -16,24 +16,28 @@ public class ProductController {
         this.productRepo = productRepo;
     }
 
+    // Show all products
     @GetMapping
     public String list(Model model) {
         model.addAttribute("products", productRepo.findAll());
         return "products/list";
     }
 
+    // Display form to add a new product
     @GetMapping("/new")
     public String newForm(Model model) {
         model.addAttribute("product", new Product());
         return "products/new";
     }
 
+    // Persist a new or updated product
     @PostMapping
     public String create(@ModelAttribute Product product) {
         productRepo.save(product);
         return "redirect:/products";
     }
 
+    // Remove a product by its ID and refresh list
     @PostMapping("/{id}/delete")
     public String delete(@PathVariable Integer id) {
         productRepo.deleteById(id);

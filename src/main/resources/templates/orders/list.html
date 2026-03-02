@@ -7,8 +7,10 @@
 </head>
 <body>
 <div class="container">
+    <!-- main heading for orders page -->
     <h1>Orders</h1>
 
+    <!-- link to create a new order -->
     <a class="btn btn-primary" th:href="@{/orders/new}">Add Order</a>
 
     <table class="table mt-3">
@@ -23,13 +25,20 @@
         </tr>
         </thead>
         <tbody>
+        <!-- iterate over orders collection passed from controller -->
         <tr th:each="o : ${orders}">
+            <!-- show order id -->
             <td th:text="${o.orderId}">1</td>
+            <!-- display order date -->
             <td th:text="${o.orderDate}">2026-02-23</td>
+            <!-- customer full name -->
             <td th:text="${o.customer.firstName + ' ' + o.customer.lastName}">Name</td>
+            <!-- total amount of order -->
             <td th:text="${o.totalAmount}">0.00</td>
+            <!-- number of items in order -->
             <td th:text="${o.items.size()}">0</td>
             <td>
+                <!-- delete form posts back to controller -->
                 <form th:action="@{'/orders/delete/' + ${o.orderId}}" method="post">
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>

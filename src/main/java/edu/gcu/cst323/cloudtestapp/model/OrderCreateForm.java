@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrderCreateForm {
+    // id of customer placing the order
     private Integer customerId;
 
-    // productId -> quantity
+    // productId -> quantity mapping from the form
     private Map<Integer, Integer> quantities = new HashMap<>();
 
     public Integer getCustomerId() { return customerId; }
